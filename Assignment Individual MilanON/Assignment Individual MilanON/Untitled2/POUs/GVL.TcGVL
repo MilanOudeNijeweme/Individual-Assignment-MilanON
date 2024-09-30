@@ -7,11 +7,12 @@ DoorClosed : BOOL; (*Is true when door is closed*)
 TapOpen : BOOL; (*Is true when tap is open*)
 DesiredTemperature : BOOL; (*Is true when water is at desired temperature*)
 ShowerON : BOOL; (*Is true when shower is running*)
-StartTimer : BOOL; (*Starts a timer when shower is running*)
+StartTimer2 : BOOL; (*Starts a timer when shower is running*)
 StopTimer : TIME; (*Stops shower when timer expires*)
 CurrentTime : TIME; (*Displays current time left to shower*)
-MaxShowerTime : TIME := T#0.25M; (*Maximum time allowed to shower*)
+MaxShowerTime : TIME := T#15S; (*Maximum time allowed to shower*)
 ResetShower : BOOL; (*Turnes shower of when pressed*)
+Start_TP : BOOL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
