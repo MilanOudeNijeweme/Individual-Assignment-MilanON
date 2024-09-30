@@ -1,13 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1">
-  <POU Name="MAIN" Id="{cd2eb92e-b13a-41b7-9c9e-feae7366627f}">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{cd2eb92e-b13a-41b7-9c9e-feae7366627f}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	ShowerState: INT;
 END_VAR
-]]>
-    </Declaration>
+]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[CASE ShowerState OF
+	0: IF GVL.DoorClosed THEN
+		ShowerState := 1;
+	END_IF
+	
+	1: IF GVL.DesiredTemperature THEN
+		ShowerState := 2;
+	END_IF
+	
+	2: IF GVL.TapOpen THEN
+		GVL.ShowerON := TRUE;
+		GVL.StartTimer := GVL.CurrentTime;
+		ShowerState := 3;
+	END_IF
+	
+	3: IF (GVL.CurrentTime - GVL.StartTimer >= GVL.MaxShowerTime) THEN
+		GVL.ShowerON := FALSE;
+		GVL.TapOpen := FALSE;
+		ShowerState := 0;
+	END_IF
+END_CASE]]></ST>
     </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="8" Count="1" />
+      <LineId Id="11" Count="6" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="22" Count="2" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
