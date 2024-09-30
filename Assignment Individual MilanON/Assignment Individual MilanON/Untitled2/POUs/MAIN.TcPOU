@@ -3,11 +3,15 @@
   <POU Name="MAIN" Id="{cd2eb92e-b13a-41b7-9c9e-feae7366627f}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	ShowerState: INT;
+	ShowerState : INT;
+	Current_Time : TIME;
+	Timer : TP;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[CASE ShowerState OF
+      <ST><![CDATA[GVL.CurrentTime := Current_Time;
+
+CASE ShowerState OF
 	0: IF GVL.DoorClosed THEN
 		ShowerState := 1;
 	END_IF
@@ -18,30 +22,37 @@ END_VAR
 	
 	2: IF GVL.TapOpen THEN
 		GVL.ShowerON := TRUE;
-		GVL.StartTimer := GVL.CurrentTime;
+		GVL.StartTimer := TRUE;
+		Timer(IN:= GVL.StartTimer, PT:=T#15S);
 		ShowerState := 3;
 	END_IF
 	
-	3: IF (GVL.CurrentTime - GVL.StartTimer >= GVL.MaxShowerTime) THEN
-		GVL.ShowerON := FALSE;
-		GVL.TapOpen := FALSE;
-		ShowerState := 0;
-	END_IF
-END_CASE]]></ST>
+END_CASE
+
+IF GVL.ResetShower THEN
+	ShowerState :=0;
+END_IF
+
+]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
+      <LineId Id="43" Count="0" />
+      <LineId Id="59" Count="0" />
       <LineId Id="2" Count="0" />
       <LineId Id="6" Count="0" />
       <LineId Id="8" Count="1" />
       <LineId Id="11" Count="6" />
-      <LineId Id="19" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="47" Count="0" />
       <LineId Id="21" Count="0" />
       <LineId Id="18" Count="0" />
-      <LineId Id="22" Count="2" />
-      <LineId Id="31" Count="0" />
-      <LineId Id="26" Count="0" />
-      <LineId Id="25" Count="0" />
+      <LineId Id="36" Count="0" />
       <LineId Id="7" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="34" Count="1" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="40" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
