@@ -24,14 +24,20 @@ END_VAR
 		ShowerState := 2;
 	END_IF
 	
-	2: IF GVL.TapOpen THEN
+	2: 	IF GVL.TapOpen THEN
 		GVL.ShowerON := TRUE;
 		StartTimer := TRUE;
 		Timer3(IN:= StartTimer, PT:=T#15S);
-		ShowerState := 3;
-		ELSE
-			StartTimer := FALSE;
+		ELSE 
 			GVL.ShowerON := FALSE;
+			StartTimer := FALSE;	
+		END_IF
+			
+		IF Timer3.Q THEN
+			GVL.ShowerON := FALSE;
+			StartTImer := FALSE;
+			ShowerState := 3;
+
 	END_IF
 	
 END_CASE
@@ -49,8 +55,12 @@ END_IF
       <LineId Id="11" Count="6" />
       <LineId Id="67" Count="0" />
       <LineId Id="47" Count="0" />
+      <LineId Id="89" Count="2" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="92" Count="0" />
+      <LineId Id="86" Count="2" />
       <LineId Id="21" Count="0" />
-      <LineId Id="70" Count="2" />
+      <LineId Id="72" Count="0" />
       <LineId Id="18" Count="0" />
       <LineId Id="36" Count="0" />
       <LineId Id="7" Count="0" />
