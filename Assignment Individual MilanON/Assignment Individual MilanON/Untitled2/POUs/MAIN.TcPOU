@@ -18,6 +18,8 @@ END_VAR
       <ST><![CDATA[CASE ShowerState OF
 	0: IF GVL.DoorClosed THEN
 		ShowerState := 1;
+		StartTimer := FALSE;
+		Timer3(IN := FALSE);
 	END_IF
 	
 	1: IF GVL.DesiredTemperature THEN
@@ -36,7 +38,7 @@ END_VAR
 		IF Timer3.Q THEN
 			GVL.ShowerON := FALSE;
 			StartTImer := FALSE;
-			ShowerState := 3;
+			ShowerState :=0;
 
 	END_IF
 	
@@ -51,7 +53,9 @@ END_IF
     <LineIds Name="MAIN">
       <LineId Id="2" Count="0" />
       <LineId Id="6" Count="0" />
-      <LineId Id="8" Count="1" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="107" Count="0" />
+      <LineId Id="120" Count="1" />
       <LineId Id="11" Count="6" />
       <LineId Id="67" Count="0" />
       <LineId Id="47" Count="0" />
