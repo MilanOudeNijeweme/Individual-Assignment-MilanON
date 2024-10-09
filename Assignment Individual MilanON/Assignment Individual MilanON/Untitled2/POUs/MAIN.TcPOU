@@ -9,6 +9,8 @@ VAR
 	Timer3 : TON;
 	Timer_TP : TP;
 	RisingTrigger : R_TRIG;
+	Pulse : BOOL;
+	RisingEdgeStart: R_TRIG;
 	
 	//Input/Outputs
 	Output_TP : BOOL;
@@ -17,64 +19,44 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[CASE ShowerState OF
-	0: IF GVL.DoorClosed THEN
-		ShowerState := 1;
-		StartTimer := FALSE;
-		Timer3(IN := FALSE);
-	END_IF
-	
-	1: IF GVL.DesiredTemperature THEN
-		ShowerState := 2;
-	END_IF
-	
-	2: 	IF GVL.TapOpen THEN
-		GVL.ShowerON := TRUE;
-		RisingTrigger.CLK := TRUE;
-		
-		Timer3(IN:= RisingTrigger.Q, PT:=T#15S);
-		ELSE 
-			GVL.ShowerON := FALSE;
-			StartTimer := FALSE;	
-		END_IF
-			
-		IF Timer3.Q THEN
-			GVL.ShowerON := FALSE;
-			StartTImer := FALSE;
-			ShowerState :=0;
+    0: IF GVL.DoorClosed THEN
+        ShowerState := 1;
+        StartTimer := FALSE;
+        Timer3(IN := FALSE); (* Zorg ervoor dat de timer volledig is uitgeschakeld *)
+    END_IF
 
-	END_IF
-	
+    1: IF GVL.DesiredTemperature THEN
+        ShowerState := 2;
+    END_IF
+
+    2: IF GVL.TapOpen THEN
+        GVL.ShowerON := TRUE;
+        RisingEdgeStart(CLK := GVL.TapOpen); (* Detect rising edge of tap open *)
+        Pulse := RisingEdgeStart.Q; (* Generate a pulse when the tap is opened *)
+        
+        IF Pulse THEN
+            StartTimer := TRUE; (* Start the timer with a pulse *)
+        END_IF
+
+        Timer3(IN := StartTimer, PT := T#15S); (* Timer runs for 15 seconds *)
+
+    IF Timer3.Q THEN
+        GVL.ShowerON := FALSE;
+        StartTimer := FALSE;
+        Timer3(IN := FALSE); (* Zet de timer uit zodat Q niet opnieuw actief blijft *)
+        ShowerState := 0; (* Reset de status naar 0 zodra de timer afloopt *)
+    END_IF
+
 END_CASE
 
 IF GVL.ResetShower THEN
-	ShowerState :=0;
+    ShowerState := 0;
 END_IF
-
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="2" Count="0" />
-      <LineId Id="6" Count="0" />
-      <LineId Id="8" Count="0" />
-      <LineId Id="107" Count="0" />
-      <LineId Id="120" Count="1" />
-      <LineId Id="11" Count="6" />
-      <LineId Id="136" Count="0" />
-      <LineId Id="134" Count="0" />
-      <LineId Id="47" Count="0" />
-      <LineId Id="89" Count="2" />
-      <LineId Id="94" Count="0" />
-      <LineId Id="92" Count="0" />
-      <LineId Id="86" Count="2" />
-      <LineId Id="21" Count="0" />
-      <LineId Id="72" Count="0" />
-      <LineId Id="18" Count="0" />
-      <LineId Id="36" Count="0" />
-      <LineId Id="7" Count="0" />
-      <LineId Id="33" Count="0" />
-      <LineId Id="32" Count="0" />
-      <LineId Id="34" Count="1" />
-      <LineId Id="41" Count="0" />
+      <LineId Id="213" Count="20" />
+      <LineId Id="239" Count="12" />
       <LineId Id="40" Count="0" />
     </LineIds>
   </POU>
