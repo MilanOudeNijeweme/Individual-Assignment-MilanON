@@ -6,15 +6,9 @@ VAR
 	ShowerState : INT;
 	Current_Time : TIME;
 	StartTimer : BOOL := FALSE;
-	Timer3 : TON;
-	Timer_TP : TP;
-	RisingTrigger : R_TRIG;
 	Pulse : BOOL;
+	Timer3 : TON;
 	RisingEdgeStart: R_TRIG;
-	
-	//Input/Outputs
-	Output_TP : BOOL;
-	ElapseTime_TP : TIME;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -30,22 +24,26 @@ END_VAR
     END_IF
 
     2: IF GVL.TapOpen THEN
-        GVL.ShowerON := TRUE;
-        RisingEdgeStart(CLK := GVL.TapOpen); (* Detect rising edge of tap open *)
-        Pulse := RisingEdgeStart.Q; (* Generate a pulse when the tap is opened *)
+      		GVL.ShowerON := TRUE;
+        	RisingEdgeStart(CLK := GVL.TapOpen); (* Detect rising edge of tap open *)
+       		Pulse := RisingEdgeStart.Q; (* Generate a pulse when the tap is opened *)
         
-        IF Pulse THEN
-            StartTimer := TRUE; (* Start the timer with a pulse *)
-        END_IF
+        	IF Pulse THEN
+            	StartTimer := TRUE; (* Start the timer with a pulse *)
+        	END_IF
 
-        Timer3(IN := StartTimer, PT := T#15S); (* Timer runs for 15 seconds *)
-
-    IF Timer3.Q THEN
-        GVL.ShowerON := FALSE;
+        	Timer3(IN := StartTimer, PT := T#15S); (* Timer runs for 15 seconds *)
+		END_IF
+		
+    	IF Timer3.ET >= Timer3.PT THEN
+			ShowerState := 3;
+    	END_IF
+	
+	3: 
+	    GVL.ShowerON := FALSE;
         StartTimer := FALSE;
         Timer3(IN := FALSE); (* Zet de timer uit zodat Q niet opnieuw actief blijft *)
         ShowerState := 0; (* Reset de status naar 0 zodra de timer afloopt *)
-    END_IF
 
 END_CASE
 
@@ -56,7 +54,15 @@ END_IF
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="213" Count="20" />
-      <LineId Id="239" Count="12" />
+      <LineId Id="239" Count="0" />
+      <LineId Id="271" Count="0" />
+      <LineId Id="240" Count="0" />
+      <LineId Id="279" Count="0" />
+      <LineId Id="245" Count="0" />
+      <LineId Id="272" Count="1" />
+      <LineId Id="275" Count="2" />
+      <LineId Id="274" Count="0" />
+      <LineId Id="246" Count="5" />
       <LineId Id="40" Count="0" />
     </LineIds>
   </POU>
