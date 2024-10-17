@@ -13,34 +13,43 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[CASE ShowerState OF
-    0: IF GVL.DoorClosed THEN
-        ShowerState := 1;
-        StartTimer := FALSE;
-        Timer3(IN := FALSE); (* Zorg ervoor dat de timer volledig is uitgeschakeld *)
-    END_IF
+    0: 
+        IF GVL.DoorClosed THEN
+            ShowerState := 1;
+            StartTimer := FALSE;
+            Timer3(IN := FALSE); (* Zorg ervoor dat de timer volledig is uitgeschakeld *)
+        END_IF
 
-    1: IF GVL.DesiredTemperature THEN
-        ShowerState := 2;
-    END_IF
+    1: 
+        IF GVL.DesiredTemperature THEN
+            ShowerState := 2;
+        END_IF
 
-    2: IF GVL.TapOpen THEN
-      		GVL.ShowerON := TRUE;
-        	RisingEdgeStart(CLK := GVL.TapOpen); (* Detect rising edge of tap open *)
-       		Pulse := RisingEdgeStart.Q; (* Generate a pulse when the tap is opened *)
+    2: 
+        IF GVL.TapOpen THEN
+            GVL.ShowerON := TRUE;
+            RisingEdgeStart(CLK := GVL.TapOpen); (* Detect rising edge of tap open *)
+            Pulse := RisingEdgeStart.Q; (* Genereer een puls wanneer de kraan wordt geopend *)
+
+            IF Pulse THEN
+                StartTimer := TRUE; (* Start de timer *)
+            END_IF
+        END_IF
         
-        	IF Pulse THEN
-            	StartTimer := TRUE; (* Start the timer with a pulse *)
-        	END_IF
+        (* Zorg ervoor dat de timer alleen eenmaal start en blijft lopen voor de duur van PT *)
+        IF StartTimer THEN
+            Timer3(IN := TRUE, PT := T#15S); (* Timer blijft lopen *)
+        ELSE
+            Timer3(IN := FALSE); (* Timer stopt indien niet gestart *)
+        END_IF
 
-        	Timer3(IN := StartTimer, PT := T#15S); (* Timer runs for 15 seconds *)
-		END_IF
-		
-    	IF Timer3.ET >= Timer3.PT THEN
-			ShowerState := 3;
-    	END_IF
-	
-	3: 
-	    GVL.ShowerON := FALSE;
+        (* Controleer de timeruitgang om de status te veranderen *)
+        IF Timer3.Q THEN
+            ShowerState := 3; (* Ga naar de volgende toestand wanneer de timer afloopt *)
+        END_IF
+
+    3: 
+        GVL.ShowerON := FALSE;
         StartTimer := FALSE;
         Timer3(IN := FALSE); (* Zet de timer uit zodat Q niet opnieuw actief blijft *)
         ShowerState := 0; (* Reset de status naar 0 zodra de timer afloopt *)
@@ -53,16 +62,7 @@ END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="213" Count="20" />
-      <LineId Id="239" Count="0" />
-      <LineId Id="271" Count="0" />
-      <LineId Id="240" Count="0" />
-      <LineId Id="279" Count="0" />
-      <LineId Id="245" Count="0" />
-      <LineId Id="272" Count="1" />
-      <LineId Id="275" Count="2" />
-      <LineId Id="274" Count="0" />
-      <LineId Id="246" Count="5" />
+      <LineId Id="423" Count="46" />
       <LineId Id="40" Count="0" />
     </LineIds>
   </POU>
