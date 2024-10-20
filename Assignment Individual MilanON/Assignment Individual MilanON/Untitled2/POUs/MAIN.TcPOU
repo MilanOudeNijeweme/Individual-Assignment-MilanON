@@ -15,6 +15,7 @@ END_VAR
     <Implementation>
       <ST><![CDATA[CASE ShowerState OF
     0: 
+		
         IF GVL.DoorClosed THEN
             ShowerState := 1;
         END_IF
@@ -27,18 +28,22 @@ END_VAR
     2: 
         IF GVL.TapOpen THEN
             GVL.ShowerON := TRUE;
-							Timer(IN:=TRUE, PT:=T#15S);
+			Timer(IN:=TRUE, PT:=T#15S);
 		
-			ELSIF Timer.Q THEN
+		END_IF
+		
+			IF Timer.Q THEN
 				ShowerState := 3;
-        END_IF
+        	END_IF
  
 
     3: 
         GVL.ShowerON := FALSE;
         Timer(IN := FALSE); (* Zet de timer uit zodat Q niet opnieuw actief blijft *)
         ShowerState := 0; (* Reset de status naar 0 zodra de timer afloopt *)
-
+		GVL.DoorClosed := FALSE;
+		GVL.DesiredTemperature := FALSE;
+		GVL.TapOpen := FALSE;
 END_CASE
 
 IF GVL.ResetShower THEN
@@ -47,15 +52,22 @@ END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="423" Count="2" />
+      <LineId Id="423" Count="1" />
+      <LineId Id="503" Count="0" />
+      <LineId Id="425" Count="0" />
       <LineId Id="483" Count="0" />
       <LineId Id="429" Count="8" />
       <LineId Id="480" Count="0" />
       <LineId Id="444" Count="0" />
-      <LineId Id="486" Count="2" />
+      <LineId Id="486" Count="1" />
+      <LineId Id="501" Count="0" />
+      <LineId Id="499" Count="0" />
+      <LineId Id="488" Count="0" />
       <LineId Id="445" Count="0" />
       <LineId Id="457" Count="3" />
-      <LineId Id="462" Count="7" />
+      <LineId Id="462" Count="1" />
+      <LineId Id="506" Count="1" />
+      <LineId Id="464" Count="5" />
       <LineId Id="40" Count="0" />
     </LineIds>
   </POU>
