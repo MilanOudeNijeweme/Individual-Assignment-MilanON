@@ -3,17 +3,9 @@
   <GVL Name="GVL" Id="{4cad470e-3bd1-47d6-ab6d-168c6f1adafd}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-Initialized : BOOL; (*Resets variables values*)
-DoorClosed : BOOL; (*Is true when door is closed*)
-TapOpen : BOOL; (*Is true when tap is open*)
-DesiredTemperature : BOOL; (*Is true when water is at desired temperature*)
-ShowerON : BOOL; (*Is true when shower is running*)
-StartTimer2 : BOOL; (*Starts a timer when shower is running*)
-StopTimer : TIME; (*Stops shower when timer expires*)
-CurrentTime : TIME; (*Displays current time left to shower*)
-MaxShowerTime : TIME := T#15S; (*Maximum time allowed to shower*)
-ResetShower : BOOL; (*Turnes shower of when pressed*)
-Start_TP : BOOL;
+	AlarmON : BOOL := FALSE;
+	CoffeeReady : BOOL := FALSE;
+	LightsON : BOOL := FALSE;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

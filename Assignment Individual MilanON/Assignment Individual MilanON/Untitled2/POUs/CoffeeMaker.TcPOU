@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="CoffeeMaker" Id="{e1d1c9b2-a77c-40e4-84be-22e4d616f582}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM CoffeeMaker
+VAR
+	CoffeeTimer : TON; // Timer for making coffee
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF (GVL.AlarmON AND GVL.LightsON) THEN
+	CoffeeTimer(IN := TRUE, PT := T#15S); //Starting the timer for 15 seconds
+ELSE
+	CoffeeTimer(IN := FALSE);
+	GVL.CoffeeReady := FALSE;
+END_IF
+
+IF CoffeeTimer.Q THEN
+	GVL.CoffeeReady := TRUE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="CoffeeMaker">
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="9" Count="1" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="15" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -3,69 +3,14 @@
   <POU Name="MAIN" Id="{cd2eb92e-b13a-41b7-9c9e-feae7366627f}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	ShowerState : INT;
-	Current_Time : TIME;
-	StartTimer : BOOL := FALSE;
-	Pulse : BOOL;
-	Timer3 : TON;
-	Timer : TON;
-	TapOpenTrigger: R_TRIG;
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[CASE ShowerState OF
-    0: 
-		
-        IF GVL.DoorClosed THEN
-            ShowerState := 1;
-        END_IF
-
-    1: 
-        IF GVL.DesiredTemperature THEN
-            ShowerState := 2;
-        END_IF
-
-    2: 
-		TapOpenTrigger(CLK := GVL.TapOpen);
-        IF TapOpenTrigger.Q THEN
-            GVL.ShowerON := TRUE;
-			Timer(IN:=TRUE, PT:=T#15S);
-		
-		END_IF
-		
-			IF Timer.Q THEN
-				ShowerState := 3;
-        	END_IF
- 
-    3: 
-        GVL.ShowerON := FALSE;
-        Timer(IN := FALSE); (* Zet de timer uit zodat Q niet opnieuw actief blijft *)
-        ShowerState := 0; (* Reset de status naar 0 zodra de timer afloopt *)
-		GVL.DoorClosed := FALSE;
-		GVL.DesiredTemperature := FALSE;
-		GVL.TapOpen := FALSE;
-END_CASE]]></ST>
+      <ST><![CDATA[]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="423" Count="1" />
-      <LineId Id="503" Count="0" />
-      <LineId Id="425" Count="0" />
-      <LineId Id="483" Count="0" />
-      <LineId Id="429" Count="7" />
-      <LineId Id="508" Count="0" />
-      <LineId Id="437" Count="0" />
-      <LineId Id="480" Count="0" />
-      <LineId Id="444" Count="0" />
-      <LineId Id="486" Count="1" />
-      <LineId Id="501" Count="0" />
-      <LineId Id="499" Count="0" />
-      <LineId Id="488" Count="0" />
-      <LineId Id="445" Count="0" />
-      <LineId Id="457" Count="0" />
-      <LineId Id="459" Count="1" />
-      <LineId Id="462" Count="1" />
-      <LineId Id="506" Count="1" />
-      <LineId Id="464" Count="1" />
+      <LineId Id="465" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

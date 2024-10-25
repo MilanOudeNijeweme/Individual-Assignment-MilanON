@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="AlarmCheck" Id="{6a364238-c05e-42c3-a3fc-b9d78f1103e6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION AlarmCheck : BOOL
+VAR_INPUT
+	AlarmSet : BOOL; (*Check if alarm is set*)
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF AlarmSet THEN
+	AlarmCheck := TRUE;
+ELSE
+	AlarmCheck := FALSE;		
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="AlarmCheck">
+      <LineId Id="7" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="2" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
