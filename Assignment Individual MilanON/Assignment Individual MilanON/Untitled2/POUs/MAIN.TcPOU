@@ -7,15 +7,41 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[GVL.AlarmON := AlarmCheck(alarmSet);
+      <ST><![CDATA[IF GVL.StartRoutine AND NOT gvl.AlarmON THEN
+	GVL.AlarmTimer(IN := TRUE, PT := GVL.AlarmTime);
+	IF GVL.AlarmTimer.Q THEN
+		GVL.AlarmON := TRUE;
+		GVL.LightDelayTimer(IN := TRUE); //Starts the delay between when the alarm goes off and the lights turn on
+	END_IF
+	
+END_IF
+
+//Delay between when the alarm goes off and the lights turn on
+IF GVL.AlarmON AND NOT GVL.LightsON THEN
+	GVL.LightDelayTimer(PT := GVL.LightDelayTime);
+	IF GVL.LightDelayTimer.Q THEN
+		GVL.LightsON := TRUE; //Turns on after the given delay has passed
+	END_IF
+END_IF
+
+GVL.AlarmON := AlarmCheck(alarmSet);
 
 Coffeemaker();
 LightsON();]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="465" Count="0" />
-      <LineId Id="471" Count="0" />
-      <LineId Id="470" Count="0" />
+      <LineId Id="477" Count="0" />
+      <LineId Id="482" Count="1" />
+      <LineId Id="486" Count="1" />
+      <LineId Id="485" Count="0" />
+      <LineId Id="480" Count="1" />
+      <LineId Id="488" Count="0" />
+      <LineId Id="478" Count="0" />
+      <LineId Id="489" Count="1" />
+      <LineId Id="492" Count="2" />
+      <LineId Id="491" Count="0" />
+      <LineId Id="479" Count="0" />
+      <LineId Id="474" Count="2" />
       <LineId Id="472" Count="0" />
     </LineIds>
   </POU>

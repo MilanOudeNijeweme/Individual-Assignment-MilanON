@@ -3,10 +3,11 @@
   <GVL Name="GVL" Id="{4cad470e-3bd1-47d6-ab6d-168c6f1adafd}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
+	StartRoutine : BOOL := FALSE;
 	AlarmON : BOOL := FALSE;
 	CoffeeReady : BOOL := FALSE;
 	LightsON : BOOL := FALSE;
-	LightsDelayTime : TIME := T#3S;
+	LightDelayTime : TIME := T#3S;
 	LightDelayTimer : TON;
 	AlarmTime : TIME :=T#10S; //Time till alarm goes off
 	AlarmTimer : TON; //Timer 
