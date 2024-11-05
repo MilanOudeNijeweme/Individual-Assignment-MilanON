@@ -3,11 +3,11 @@
   <POU Name="MAIN" Id="{cd2eb92e-b13a-41b7-9c9e-feae7366627f}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	alarmSet : BOOL := TRUE;
+	AlarmSet : BOOL := TRUE;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF GVL.StartRoutine AND NOT gvl.AlarmON THEN
+      <ST><![CDATA[IF GVL.StartRoutine AND NOT GVL.AlarmON THEN
 	GVL.AlarmTimer(IN := TRUE, PT := GVL.AlarmTime);
 	IF GVL.AlarmTimer.Q THEN
 		GVL.AlarmON := TRUE;
@@ -24,7 +24,7 @@ IF GVL.AlarmON AND NOT GVL.LightsON THEN
 	END_IF
 END_IF
 
-GVL.AlarmON := AlarmCheck(alarmSet);
+GVL.AlarmON := AlarmCheck(AlarmSet);
 
 Coffeemaker();
 LightsON();]]></ST>
