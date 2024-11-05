@@ -9,9 +9,9 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF AlarmSet THEN
-	AlarmCheck := TRUE;
+	AlarmCheck := TRUE; // Alarm goes off
 ELSE
-	AlarmCheck := FALSE;		
+	AlarmCheck := FALSE; // Alarm doesn't go off	
 END_IF
 ]]></ST>
     </Implementation>

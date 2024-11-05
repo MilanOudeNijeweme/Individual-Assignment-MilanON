@@ -3,14 +3,20 @@
   <POU Name="MAIN" Id="{cd2eb92e-b13a-41b7-9c9e-feae7366627f}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	
+	alarmSet : BOOL := TRUE;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[GVL.AlarmON := AlarmCheck(alarmSet);
+
+Coffeemaker();
+LightsON();]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="465" Count="0" />
+      <LineId Id="471" Count="0" />
+      <LineId Id="470" Count="0" />
+      <LineId Id="472" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

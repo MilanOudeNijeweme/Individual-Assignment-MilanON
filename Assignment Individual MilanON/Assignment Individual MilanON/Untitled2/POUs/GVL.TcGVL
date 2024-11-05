@@ -6,6 +6,10 @@ VAR_GLOBAL
 	AlarmON : BOOL := FALSE;
 	CoffeeReady : BOOL := FALSE;
 	LightsON : BOOL := FALSE;
+	LightsDelayTime : TIME := T#3S;
+	LightDelayTimer : TON;
+	AlarmTime : TIME :=T#10S; //Time till alarm goes off
+	AlarmTimer : TON; //Timer 
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
