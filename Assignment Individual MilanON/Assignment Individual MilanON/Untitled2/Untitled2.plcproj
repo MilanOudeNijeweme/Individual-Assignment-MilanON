@@ -23,15 +23,18 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\AlarmCheck.TcPOU">
+    <Compile Include="POUs\CoffeeMaker.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\CoffeeMaker.TcPOU">
+    <Compile Include="POUs\DayOfWeek.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\GVL.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="POUs\IsItAWorkDay.TcPOU">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\LightsON.TcPOU">
       <SubType>Code</SubType>

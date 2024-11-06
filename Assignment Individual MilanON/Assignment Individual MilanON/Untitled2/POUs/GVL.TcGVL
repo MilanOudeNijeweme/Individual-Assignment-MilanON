@@ -11,6 +11,9 @@ VAR_GLOBAL
 	LightDelayTimer : TON;
 	AlarmTime : TIME :=T#10S; //Time till alarm goes off
 	AlarmTimer : TON; //Timer 
+	DayCounter : INT := 1; //Counts the day (1-7)
+	WorkDayStatus : BOOL := FALSE;
+	TheDayOfWeek : STRING[10] := '' ;//String for day of the week
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

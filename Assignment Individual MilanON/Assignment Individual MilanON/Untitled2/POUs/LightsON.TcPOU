@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <POU Name="LightsON" Id="{bf7c7877-381f-44b8-9503-56de3dc49d53}" SpecialFunc="None">
+  <POU Name="LightsON" Id="{05eb1e63-91b5-433c-9b62-b9f70f8ec3be}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM LightsON
 VAR
 END_VAR
@@ -13,10 +13,9 @@ ELSE
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="LightsON">
-      <LineId Id="5" Count="0" />
+      <LineId Id="5" Count="1" />
+      <LineId Id="8" Count="1" />
       <LineId Id="7" Count="0" />
-      <LineId Id="9" Count="1" />
-      <LineId Id="8" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

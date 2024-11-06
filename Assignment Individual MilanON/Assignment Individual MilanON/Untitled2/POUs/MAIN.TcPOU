@@ -4,6 +4,7 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	AlarmSet : BOOL := TRUE;
+	IsWorkDay : INT;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -24,9 +25,20 @@ IF GVL.AlarmON AND NOT GVL.LightsON THEN
 	END_IF
 END_IF
 
-GVL.AlarmON := AlarmCheck(AlarmSet);
+//Check if its a workday
+GVL.WorkDayStatus := IsItAWorkDay(GVL.DayCounter);
 
-Coffeemaker();
+IF GVL.WorkDayStatus THEN
+	Coffeemaker();
+END_IF
+
+GVL.DayCounter := GVL.DayCounter + 1;
+IF GVL.DayCounter > 7 THEN
+	GVL.DayCounter := 1;
+END_IF
+
+GVL.TheDayOfWeek := DayOfWeek(GVL.DayCounter);
+
 LightsON();]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
@@ -40,9 +52,19 @@ LightsON();]]></ST>
       <LineId Id="489" Count="1" />
       <LineId Id="492" Count="2" />
       <LineId Id="491" Count="0" />
-      <LineId Id="479" Count="0" />
-      <LineId Id="474" Count="2" />
+      <LineId Id="499" Count="0" />
+      <LineId Id="475" Count="0" />
+      <LineId Id="500" Count="0" />
+      <LineId Id="504" Count="0" />
+      <LineId Id="502" Count="0" />
+      <LineId Id="505" Count="1" />
+      <LineId Id="501" Count="0" />
       <LineId Id="472" Count="0" />
+      <LineId Id="507" Count="2" />
+      <LineId Id="512" Count="0" />
+      <LineId Id="511" Count="0" />
+      <LineId Id="513" Count="0" />
+      <LineId Id="510" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

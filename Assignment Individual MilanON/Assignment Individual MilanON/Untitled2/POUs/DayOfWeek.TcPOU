@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="DayOfWeek" Id="{60aa29e9-921d-4c9c-82c3-f087d4d67eb3}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION DayOfWeek : STRING
+VAR_INPUT
+	Day : INT; //Current day of the week
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE Day OF
+	1: DayOfWeek := 'Maandag';
+	2: DayOfWeek := 'Dinsdag';
+	3: DayOfWeek := 'Woensdag';
+	4: DayOfWeek := 'Donderdag';
+	5: DayOfWeek := 'Vrijdag';
+	6: DayOfWeek := 'Zaterdag';
+	7: DayOfWeek := 'Zondag';
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="DayOfWeek">
+      <LineId Id="8" Count="7" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
