@@ -7,13 +7,17 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF GVL.AlarmON THEN
-	GVL.LightsON := TRUE;
+	GVL.LightDelayTimer(IN:=TRUE, PT := gvl.LightDelayTime);
+		IF GVL.LightDelayTimer.Q THEN
+			GVL.LightsON := TRUE;
+		END_IF
 ELSE
 	GVL.LightsON := FALSE;
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="LightsON">
       <LineId Id="5" Count="1" />
+      <LineId Id="13" Count="2" />
       <LineId Id="8" Count="1" />
       <LineId Id="7" Count="0" />
     </LineIds>

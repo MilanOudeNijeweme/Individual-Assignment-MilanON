@@ -5,6 +5,7 @@
 VAR
 	AlarmSet : BOOL := TRUE;
 	IsWorkDay : INT;
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -12,16 +13,14 @@ END_VAR
 	GVL.AlarmTimer(IN := TRUE, PT := GVL.AlarmTime);
 	IF GVL.AlarmTimer.Q THEN
 		GVL.AlarmON := TRUE;
-		GVL.LightDelayTimer(IN := TRUE); //Starts the delay between when the alarm goes off and the lights turn on
-	END_IF
+		 //Starts the delay between when the alarm goes off and the lights turn on
 	
-END_IF
-
-//Delay between when the alarm goes off and the lights turn on
-IF GVL.AlarmON AND NOT GVL.LightsON THEN
-	GVL.LightDelayTimer(PT := GVL.LightDelayTime);
-	IF GVL.LightDelayTimer.Q THEN
-		GVL.LightsON := TRUE; //Turns on after the given delay has passed
+		GVL.DayCounter := GVL.DayCounter + 1;
+		IF GVL.DayCounter > 7 THEN
+		GVL.DayCounter := 1;
+		END_IF
+		GVL.AlarmTimer(IN := FALSE);
+		gvl.StartRoutine := FALSE;
 	END_IF
 END_IF
 
@@ -31,40 +30,51 @@ GVL.WorkDayStatus := IsItAWorkDay(GVL.DayCounter);
 IF GVL.WorkDayStatus THEN
 	Coffeemaker();
 END_IF
-
-GVL.DayCounter := GVL.DayCounter + 1;
-IF GVL.DayCounter > 7 THEN
-	GVL.DayCounter := 1;
-END_IF
-
 GVL.TheDayOfWeek := DayOfWeek(GVL.DayCounter);
+LightsON();
 
-LightsON();]]></ST>
+IF GVL.Reset THEN
+	GVL.ResetTimer(IN:=TRUE, PT := T#1S);
+	IF GVL.ResetTimer.Q THEN
+		GVL.AlarmON := FALSE;
+		GVL.LightsON := FALSE;
+		GVL.CoffeeReady := FALSE;
+		GVL.Reset := FALSE;
+	END_IF
+	
+END_IF
+]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="477" Count="0" />
       <LineId Id="482" Count="1" />
-      <LineId Id="486" Count="1" />
+      <LineId Id="486" Count="0" />
+      <LineId Id="558" Count="1" />
+      <LineId Id="562" Count="1" />
+      <LineId Id="560" Count="1" />
+      <LineId Id="487" Count="0" />
+      <LineId Id="564" Count="0" />
       <LineId Id="485" Count="0" />
-      <LineId Id="480" Count="1" />
-      <LineId Id="488" Count="0" />
-      <LineId Id="478" Count="0" />
-      <LineId Id="489" Count="1" />
-      <LineId Id="492" Count="2" />
-      <LineId Id="491" Count="0" />
+      <LineId Id="481" Count="0" />
       <LineId Id="499" Count="0" />
       <LineId Id="475" Count="0" />
       <LineId Id="500" Count="0" />
       <LineId Id="504" Count="0" />
       <LineId Id="502" Count="0" />
       <LineId Id="505" Count="1" />
-      <LineId Id="501" Count="0" />
-      <LineId Id="472" Count="0" />
-      <LineId Id="507" Count="2" />
-      <LineId Id="512" Count="0" />
       <LineId Id="511" Count="0" />
-      <LineId Id="513" Count="0" />
       <LineId Id="510" Count="0" />
+      <LineId Id="568" Count="0" />
+      <LineId Id="567" Count="0" />
+      <LineId Id="573" Count="1" />
+      <LineId Id="580" Count="0" />
+      <LineId Id="578" Count="0" />
+      <LineId Id="575" Count="0" />
+      <LineId Id="579" Count="0" />
+      <LineId Id="576" Count="0" />
+      <LineId Id="572" Count="0" />
+      <LineId Id="570" Count="0" />
+      <LineId Id="547" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

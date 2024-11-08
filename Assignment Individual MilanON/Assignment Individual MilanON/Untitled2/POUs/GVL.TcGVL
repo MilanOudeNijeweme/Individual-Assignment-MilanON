@@ -5,15 +5,18 @@
 VAR_GLOBAL
 	StartRoutine : BOOL := FALSE;
 	AlarmON : BOOL := FALSE;
+	AlarmOff : BOOL := FALSE;
 	CoffeeReady : BOOL := FALSE;
 	LightsON : BOOL := FALSE;
 	LightDelayTime : TIME := T#3S;
 	LightDelayTimer : TON;
 	AlarmTime : TIME :=T#10S; //Time till alarm goes off
 	AlarmTimer : TON; //Timer 
-	DayCounter : INT := 1; //Counts the day (1-7)
+	DayCounter : INT := 0; //Counts the day (1-7)
 	WorkDayStatus : BOOL := FALSE;
 	TheDayOfWeek : STRING[10] := '' ;//String for day of the week
+	Reset: BOOL;
+	ResetTimer: TON;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
