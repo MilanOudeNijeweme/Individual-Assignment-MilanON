@@ -1,0 +1,11 @@
+@startuml Sequence Diagram Calling Function
+Actor User
+
+Participant MainTask
+participant GetDayOfWeek
+
+User ->MainTask : Start Routine
+MainTask -> GetDayOfWeek : Call GetDayOfWeek(GVL.DayCounter)
+GetDayOfWeek -> MainTask : Return 'Monday', 'Tuesday', etc.
+
+@enduml
