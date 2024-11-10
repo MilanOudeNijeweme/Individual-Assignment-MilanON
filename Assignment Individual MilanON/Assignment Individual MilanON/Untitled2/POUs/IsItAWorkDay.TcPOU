@@ -8,14 +8,18 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF Day >= 1 AND Day <= 5 THEN
-    IsItAWorkday := TRUE; // Werkdagen (maandag t/m vrijdag)
+      <ST><![CDATA[//Checks if the day of the week is a workday
+IF Day >= 1 AND Day <= 5 THEN
+    IsItAWorkday := TRUE; //Workday (Monday till friday)
 ELSE
-    IsItAWorkday := FALSE; // Weekend (zaterdag en zondag)
+    IsItAWorkday := FALSE; // Weekend (Saturday and sunday)
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="IsItAWorkDay">
-      <LineId Id="14" Count="3" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="14" Count="1" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="17" Count="0" />
       <LineId Id="10" Count="0" />
     </LineIds>
   </POU>

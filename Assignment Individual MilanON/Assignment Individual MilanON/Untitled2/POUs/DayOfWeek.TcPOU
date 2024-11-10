@@ -8,7 +8,8 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[CASE Day OF
+      <ST><![CDATA[//transfers int to text for the visualization
+CASE Day OF
 	1: DayOfWeek := 'Maandag';
 	2: DayOfWeek := 'Dinsdag';
 	3: DayOfWeek := 'Woensdag';
@@ -19,6 +20,7 @@ END_VAR
 END_CASE]]></ST>
     </Implementation>
     <LineIds Name="DayOfWeek">
+      <LineId Id="21" Count="0" />
       <LineId Id="8" Count="7" />
       <LineId Id="7" Count="0" />
     </LineIds>

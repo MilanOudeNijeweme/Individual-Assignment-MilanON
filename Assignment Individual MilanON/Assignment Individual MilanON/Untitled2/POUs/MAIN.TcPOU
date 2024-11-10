@@ -4,35 +4,42 @@
     <Declaration><![CDATA[PROGRAM MAIN
 
 VAR
-	IsWorkDay : INT;
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF GVL.bSetAlarm AND NOT GVL.bAlarmON THEN
-	GVL.AlarmTimer(IN := TRUE, PT := GVL.AlarmTime);
-	IF GVL.AlarmTimer.Q THEN
-		GVL.bAlarmON := TRUE;
-		 //Starts the delay between when the alarm goes off and the lights turn on
-	
-		GVL.DayCounter := GVL.DayCounter + 2;
-		IF GVL.DayCounter > 7 THEN
-		GVL.DayCounter := 1;
-		END_IF
-		GVL.AlarmTimer(IN := FALSE);
-		gvl.bSetAlarm := FALSE;
-	END_IF
+      <ST><![CDATA[//Ceck if the alarm is set and is currently off
+IF GVL.bSetAlarm AND NOT GVL.bAlarmON THEN
+		GVL.AlarmTimer(IN := TRUE, PT := GVL.AlarmTime); //Starts the timer for the alarm with the predefined time
+			IF GVL.AlarmTimer.Q THEN
+				GVL.bAlarmON := TRUE;
+		 
+				GVL.DayCounter := GVL.DayCounter + 1; //Keeps track of day changes
+		
+					IF GVL.DayCounter > 7 THEN //Reset DayCounter to 1 if it exceeds 7 so its a weekly cycle
+						GVL.DayCounter := 1;
+					END_IF
+			
+				GVL.AlarmTimer(IN := FALSE);
+				gvl.bSetAlarm := FALSE;	
+			END_IF
 END_IF
 
-//Check if its a workday
+//Determine if it's a workday based on the current day
 GVL.bWorkDayStatus := IsItAWorkDay(GVL.DayCounter);
 
-IF GVL.bWorkDayStatus THEN
+//If its a workday, coffee will be made
+IF GVL.bWorkDayStatus THEN 
 	Coffeemaker();
 END_IF
 
+//Gives the name of the day 
 GVL.TheDayOfWeek := DayOfWeek(GVL.DayCounter);
+
+//Light activation
 LightsON();
 
+//Resets all the variables so the alarm can be set again.
 IF GVL.bReset THEN
 	GVL.ResetTimer(IN:=TRUE, PT := T#1S);
 	IF GVL.ResetTimer.Q THEN
@@ -47,12 +54,16 @@ END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
+      <LineId Id="595" Count="0" />
       <LineId Id="477" Count="0" />
       <LineId Id="482" Count="1" />
       <LineId Id="486" Count="0" />
-      <LineId Id="558" Count="1" />
-      <LineId Id="562" Count="1" />
+      <LineId Id="558" Count="0" />
+      <LineId Id="562" Count="0" />
+      <LineId Id="596" Count="0" />
+      <LineId Id="563" Count="0" />
       <LineId Id="560" Count="1" />
+      <LineId Id="597" Count="0" />
       <LineId Id="487" Count="0" />
       <LineId Id="564" Count="0" />
       <LineId Id="485" Count="0" />
@@ -60,12 +71,17 @@ END_IF
       <LineId Id="499" Count="0" />
       <LineId Id="475" Count="0" />
       <LineId Id="500" Count="0" />
+      <LineId Id="600" Count="0" />
       <LineId Id="504" Count="0" />
       <LineId Id="502" Count="0" />
       <LineId Id="505" Count="1" />
+      <LineId Id="601" Count="0" />
       <LineId Id="587" Count="0" />
       <LineId Id="511" Count="0" />
+      <LineId Id="603" Count="0" />
+      <LineId Id="602" Count="0" />
       <LineId Id="510" Count="0" />
+      <LineId Id="604" Count="0" />
       <LineId Id="568" Count="0" />
       <LineId Id="567" Count="0" />
       <LineId Id="573" Count="1" />

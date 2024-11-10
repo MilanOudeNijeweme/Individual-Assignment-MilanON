@@ -4,27 +4,31 @@
     <Declaration><![CDATA[PROGRAM CoffeeMaker
 
 VAR
-	CoffeeTimer : TON; // Timer for making coffee
+
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF (GVL.bAlarmON AND GVL.bLightsON) THEN
-	CoffeeTimer(IN := TRUE, PT := GVL.tCoffeeTime); //Starting the timer for 15 seconds
+      <ST><![CDATA[//Checks if both the alarm and the lights are on
+IF (GVL.bAlarmON AND GVL.bLightsON) THEN
+	GVL.CoffeeTimer(IN := TRUE, PT := GVL.tCoffeeTime); //Starting the timer with the predefined time
 ELSE
-	CoffeeTimer(IN := FALSE);
+	GVL.CoffeeTimer(IN := FALSE);
 	GVL.bCoffeeReady := FALSE;
 END_IF
 
-IF CoffeeTimer.Q THEN
+//Indicates that the coffee is ready when the timer is finished
+IF GVL.CoffeeTimer.Q THEN
 	GVL.bCoffeeReady := TRUE;
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="CoffeeMaker">
+      <LineId Id="22" Count="0" />
       <LineId Id="5" Count="0" />
       <LineId Id="7" Count="0" />
       <LineId Id="9" Count="1" />
       <LineId Id="12" Count="0" />
       <LineId Id="8" Count="0" />
+      <LineId Id="23" Count="0" />
       <LineId Id="14" Count="0" />
       <LineId Id="13" Count="0" />
       <LineId Id="15" Count="1" />
