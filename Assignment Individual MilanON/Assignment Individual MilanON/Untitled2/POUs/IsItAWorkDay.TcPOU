@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="IsItAWorkDay" Id="{75519698-d21d-4d12-a3d5-65e39bde2dc3}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION IsItAWorkDay : Bool
+    <Declaration><![CDATA[FUNCTION IsItAWorkDay : BOOL
+
 VAR_INPUT
 	Day : INT; //Current Day
 END_VAR

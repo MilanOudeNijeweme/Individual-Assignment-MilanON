@@ -2,44 +2,45 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="MAIN" Id="{cd2eb92e-b13a-41b7-9c9e-feae7366627f}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
+
 VAR
-	AlarmSet : BOOL := TRUE;
 	IsWorkDay : INT;
-	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF GVL.StartRoutine AND NOT GVL.AlarmON THEN
+      <ST><![CDATA[IF GVL.bStartRoutine AND NOT GVL.bAlarmON THEN
 	GVL.AlarmTimer(IN := TRUE, PT := GVL.AlarmTime);
 	IF GVL.AlarmTimer.Q THEN
-		GVL.AlarmON := TRUE;
+		GVL.bAlarmON := TRUE;
 		 //Starts the delay between when the alarm goes off and the lights turn on
 	
-		GVL.DayCounter := GVL.DayCounter + 1;
+		GVL.DayCounter := GVL.DayCounter + 2;
 		IF GVL.DayCounter > 7 THEN
 		GVL.DayCounter := 1;
 		END_IF
 		GVL.AlarmTimer(IN := FALSE);
-		gvl.StartRoutine := FALSE;
+		gvl.bStartRoutine := FALSE;
 	END_IF
 END_IF
 
 //Check if its a workday
-GVL.WorkDayStatus := IsItAWorkDay(GVL.DayCounter);
+GVL.bWorkDayStatus := IsItAWorkDay(GVL.DayCounter);
 
-IF GVL.WorkDayStatus THEN
+IF GVL.bWorkDayStatus THEN
 	Coffeemaker();
 END_IF
+
 GVL.TheDayOfWeek := DayOfWeek(GVL.DayCounter);
 LightsON();
 
-IF GVL.Reset THEN
+IF GVL.bReset THEN
 	GVL.ResetTimer(IN:=TRUE, PT := T#1S);
 	IF GVL.ResetTimer.Q THEN
-		GVL.AlarmON := FALSE;
+		GVL.bAlarmON := FALSE;
 		GVL.LightsON := FALSE;
-		GVL.CoffeeReady := FALSE;
+		GVL.bCoffeeReady := FALSE;
 		GVL.Reset := FALSE;
+		GVL.ResetTimer(IN:=FALSE);
 	END_IF
 	
 END_IF
@@ -62,6 +63,7 @@ END_IF
       <LineId Id="504" Count="0" />
       <LineId Id="502" Count="0" />
       <LineId Id="505" Count="1" />
+      <LineId Id="587" Count="0" />
       <LineId Id="511" Count="0" />
       <LineId Id="510" Count="0" />
       <LineId Id="568" Count="0" />
@@ -71,6 +73,7 @@ END_IF
       <LineId Id="578" Count="0" />
       <LineId Id="575" Count="0" />
       <LineId Id="579" Count="0" />
+      <LineId Id="588" Count="0" />
       <LineId Id="576" Count="0" />
       <LineId Id="572" Count="0" />
       <LineId Id="570" Count="0" />

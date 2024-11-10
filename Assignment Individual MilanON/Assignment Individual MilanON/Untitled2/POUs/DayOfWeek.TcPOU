@@ -2,6 +2,7 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="DayOfWeek" Id="{60aa29e9-921d-4c9c-82c3-f087d4d67eb3}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION DayOfWeek : STRING
+
 VAR_INPUT
 	Day : INT; //Current day of the week
 END_VAR

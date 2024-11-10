@@ -2,14 +2,16 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="LightsON" Id="{05eb1e63-91b5-433c-9b62-b9f70f8ec3be}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM LightsON
+
 VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF GVL.AlarmON THEN
-	GVL.LightDelayTimer(IN:=TRUE, PT := gvl.LightDelayTime);
+      <ST><![CDATA[IF GVL.bAlarmON THEN
+	GVL.LightDelayTimer(IN:=TRUE, PT := GVL.tLightDelayTime);
 		IF GVL.LightDelayTimer.Q THEN
 			GVL.LightsON := TRUE;
+			GVL.LightDelayTimer(IN:=FALSE);
 		END_IF
 ELSE
 	GVL.LightsON := FALSE;
@@ -17,7 +19,9 @@ END_IF]]></ST>
     </Implementation>
     <LineIds Name="LightsON">
       <LineId Id="5" Count="1" />
-      <LineId Id="13" Count="2" />
+      <LineId Id="13" Count="1" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="15" Count="0" />
       <LineId Id="8" Count="1" />
       <LineId Id="7" Count="0" />
     </LineIds>
