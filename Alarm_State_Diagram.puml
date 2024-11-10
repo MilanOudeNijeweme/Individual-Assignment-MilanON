@@ -1,4 +1,4 @@
-@startuml
+@startuml Alarm State Diagram
 state "Alarm Task" as AlarmTask {
     [*] --> Idle
     Idle --> SetAlarm : bSetAlarm = TRUE

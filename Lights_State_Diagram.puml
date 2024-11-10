@@ -1,4 +1,4 @@
-@startuml
+@startuml Lights State Diagram
 state "Lights Task" as LightsTask {
     [*] --> Off
     Off --> Delay : bAlarmON = TRUE
