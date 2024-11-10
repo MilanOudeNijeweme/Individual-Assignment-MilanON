@@ -26,6 +26,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"97"</v>
+              <v n="TextDefault">"Day of the week"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"994"</v>
               <v n="TextDefault">"Desired"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -43,6 +48,11 @@
             <o>
               <v n="TextID">"176"</v>
               <v n="TextDefault">"LightsON"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"816"</v>
+              <v n="TextDefault">"Reset"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

@@ -8,7 +8,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF GVL.bStartRoutine AND NOT GVL.bAlarmON THEN
+      <ST><![CDATA[IF GVL.bSetAlarm AND NOT GVL.bAlarmON THEN
 	GVL.AlarmTimer(IN := TRUE, PT := GVL.AlarmTime);
 	IF GVL.AlarmTimer.Q THEN
 		GVL.bAlarmON := TRUE;
@@ -19,7 +19,7 @@ END_VAR
 		GVL.DayCounter := 1;
 		END_IF
 		GVL.AlarmTimer(IN := FALSE);
-		gvl.bStartRoutine := FALSE;
+		gvl.bSetAlarm := FALSE;
 	END_IF
 END_IF
 
@@ -39,7 +39,7 @@ IF GVL.bReset THEN
 		GVL.bAlarmON := FALSE;
 		GVL.LightsON := FALSE;
 		GVL.bCoffeeReady := FALSE;
-		GVL.Reset := FALSE;
+		GVL.bReset := FALSE;
 		GVL.ResetTimer(IN:=FALSE);
 	END_IF
 	
