@@ -8,7 +8,17 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[//Ceck if the alarm is set and is currently off
+      <ST><![CDATA[//Milan Oude Nijeweme
+//517922
+//Process and Safety individual assignment
+
+//This program provides a structured morning routine where, in sequence, an alarm goes off,
+//lights turn on, and coffee is made. it accounts for the day of the week to determine if
+//it's a workday and includes a reset feature to restore all actions and prepare for the
+//next routine.
+
+
+//Ceck if the alarm is set and is currently off
 IF GVL.bSetAlarm AND NOT GVL.bAlarmON THEN
 		GVL.AlarmTimer(IN := TRUE, PT := GVL.AlarmTime); //Starts the timer for the alarm with the predefined time
 			IF GVL.AlarmTimer.Q THEN
@@ -54,6 +64,13 @@ END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
+      <LineId Id="606" Count="0" />
+      <LineId Id="613" Count="1" />
+      <LineId Id="616" Count="0" />
+      <LineId Id="615" Count="0" />
+      <LineId Id="608" Count="2" />
+      <LineId Id="617" Count="0" />
+      <LineId Id="607" Count="0" />
       <LineId Id="595" Count="0" />
       <LineId Id="477" Count="0" />
       <LineId Id="482" Count="1" />
