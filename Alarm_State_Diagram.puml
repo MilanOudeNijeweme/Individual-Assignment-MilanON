@@ -1,0 +1,9 @@
+@startuml
+state "Alarm Task" as AlarmTask {
+    [*] --> Idle
+    Idle --> SetAlarm : bSetAlarm = TRUE
+    SetAlarm --> AlarmON : AlarmTimer.Q = TRUE
+    AlarmON --> Idle : bReset = TRUE
+}
+
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+state "Lights Task" as LightsTask {
+    [*] --> Off
+    Off --> Delay : bAlarmON = TRUE
+    Delay --> LightsON : LightDelayTimer.Q = TRUE
+    LightsON --> Off : bReset = TRUE
+}
+
+@enduml
