@@ -35,21 +35,19 @@ IF GVL.bSetAlarm AND NOT GVL.bAlarmON THEN
 			END_IF
 END_IF
 
+LightsON();
+
 //Determine if it's a workday based on the current day
 GVL.bWorkDayStatus := IsItAWorkDay(GVL.DayCounter);
 
-
-
 //Gives the name of the day 
 GVL.TheDayOfWeek := DayOfWeek(GVL.DayCounter);
-
-//Light activation
-LightsON();
 
 //Resets all the variables so the alarm can be set again.
 IF GVL.bReset THEN
 	GVL.ResetTimer(IN:=TRUE, PT := T#1S);
 	IF GVL.ResetTimer.Q THEN
+		GVL.LightDelayTimer(IN:=FALSE);
 		GVL.bAlarmON := FALSE;
 		GVL.bLightsON := FALSE;
 		GVL.bCoffeeReady := FALSE;
@@ -82,21 +80,19 @@ END_IF
       <LineId Id="564" Count="0" />
       <LineId Id="485" Count="0" />
       <LineId Id="481" Count="0" />
+      <LineId Id="623" Count="0" />
       <LineId Id="499" Count="0" />
+      <LineId Id="624" Count="0" />
       <LineId Id="475" Count="0" />
       <LineId Id="500" Count="0" />
-      <LineId Id="600" Count="0" />
-      <LineId Id="506" Count="0" />
       <LineId Id="601" Count="0" />
       <LineId Id="587" Count="0" />
       <LineId Id="511" Count="0" />
-      <LineId Id="603" Count="0" />
-      <LineId Id="602" Count="0" />
-      <LineId Id="510" Count="0" />
       <LineId Id="604" Count="0" />
       <LineId Id="568" Count="0" />
       <LineId Id="567" Count="0" />
       <LineId Id="573" Count="1" />
+      <LineId Id="630" Count="0" />
       <LineId Id="580" Count="0" />
       <LineId Id="578" Count="0" />
       <LineId Id="575" Count="0" />

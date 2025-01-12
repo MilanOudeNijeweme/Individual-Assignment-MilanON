@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <Task Name="CoffeeMakerTask" Id="{93742432-1275-489d-85e7-64eea859a79a}">
+  <Task Name="CoffeeMakerTask" Id="{ce0d2f94-ca7d-4062-bb50-ee9525e65a1d}">
     <!--CycleTime in micro seconds.-->
-    <CycleTime>50000</CycleTime>
+    <CycleTime>10000</CycleTime>
     <Priority>1</Priority>
     <PouCall>
       <Name>CoffeeMaker</Name>
     </PouCall>
-    <TaskFBGuid>{a992a298-ea8f-4aff-beed-3239b479a1ca}</TaskFBGuid>
-    <Fb_init>{ce64dcce-d46f-42af-84d6-e8c8f9d43278}</Fb_init>
-    <Fb_exit>{546c8b41-d530-4db1-9058-40a33fa6bf2c}</Fb_exit>
-    <CycleUpdate>{3c41387c-29d9-42e1-9e2a-064249a4da04}</CycleUpdate>
-    <PostCycleUpdate>{37998388-8b4f-4c6d-9f3b-74c99ef93c5f}</PostCycleUpdate>
+    <TaskFBGuid>{d7184b12-73a8-4d9d-9b84-9d8256469ce7}</TaskFBGuid>
+    <Fb_init>{2398ab90-a8af-46bc-a90f-98223fef60fa}</Fb_init>
+    <Fb_exit>{22304a37-5e9c-4d92-80e3-1f2640e09f9b}</Fb_exit>
+    <CycleUpdate>{02f3604d-0bc5-4c8a-95a7-602b85296869}</CycleUpdate>
+    <PostCycleUpdate>{b4ae8bef-6afb-4342-9b70-0d5a4fc4a4d7}</PostCycleUpdate>
   </Task>
 </TcPlcObject>
