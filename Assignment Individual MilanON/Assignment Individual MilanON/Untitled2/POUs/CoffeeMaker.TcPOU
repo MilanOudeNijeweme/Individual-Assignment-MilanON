@@ -8,8 +8,10 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[//Checks if both the alarm and the lights are on
-IF (GVL.bAlarmON AND GVL.bLightsON) THEN
+      <ST><![CDATA[//If its a workday, coffee will be made
+
+//Checks if both the alarm and the lights are on
+IF (GVL.bAlarmON AND GVL.bLightsON) AND GVL.bWorkDayStatus THEN
 	GVL.CoffeeTimer(IN := TRUE, PT := GVL.tCoffeeTime); //Starting the timer with the predefined time
 ELSE
 	GVL.CoffeeTimer(IN := FALSE);
@@ -22,6 +24,8 @@ IF GVL.CoffeeTimer.Q THEN
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="CoffeeMaker">
+      <LineId Id="36" Count="0" />
+      <LineId Id="35" Count="0" />
       <LineId Id="22" Count="0" />
       <LineId Id="5" Count="0" />
       <LineId Id="7" Count="0" />

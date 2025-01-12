@@ -38,10 +38,7 @@ END_IF
 //Determine if it's a workday based on the current day
 GVL.bWorkDayStatus := IsItAWorkDay(GVL.DayCounter);
 
-//If its a workday, coffee will be made
-IF GVL.bWorkDayStatus THEN 
-	Coffeemaker();
-END_IF
+
 
 //Gives the name of the day 
 GVL.TheDayOfWeek := DayOfWeek(GVL.DayCounter);
@@ -89,9 +86,7 @@ END_IF
       <LineId Id="475" Count="0" />
       <LineId Id="500" Count="0" />
       <LineId Id="600" Count="0" />
-      <LineId Id="504" Count="0" />
-      <LineId Id="502" Count="0" />
-      <LineId Id="505" Count="1" />
+      <LineId Id="506" Count="0" />
       <LineId Id="601" Count="0" />
       <LineId Id="587" Count="0" />
       <LineId Id="511" Count="0" />
