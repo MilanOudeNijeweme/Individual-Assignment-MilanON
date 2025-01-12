@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Task Name="ResetTask" Id="{15b2c8cf-41ff-4368-a85d-41ff37827eee}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>10000</CycleTime>
+    <Priority>3</Priority>
+    <TaskFBGuid>{e512cb10-2e45-4833-ac8f-fde0a29f9abb}</TaskFBGuid>
+    <Fb_init>{7f201c7e-6dbc-4957-9a59-356d0545a96c}</Fb_init>
+    <Fb_exit>{c468255c-2f5a-4bf9-b8e8-9ec0d11b4870}</Fb_exit>
+    <CycleUpdate>{df985c67-8680-4fbb-89b7-ea61345b3cf9}</CycleUpdate>
+    <PostCycleUpdate>{3fcabb92-6620-4337-b4dd-628585b935eb}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>
