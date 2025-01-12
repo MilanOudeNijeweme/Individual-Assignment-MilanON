@@ -1,7 +1,8 @@
-@startuml Sequence Diagram Communcation Morning Routine
+@startuml Sequence Diagram Communication Morning Routine
 actor User
 
 participant MainTask
+participant Alarm
 participant LightTask
 participant WorkdayTask
 participant CoffeeTask
@@ -9,11 +10,15 @@ participant ResetTask
 
 User -> MainTask : Start Routine
 
+MainTask -> Alarm : Start countdown for alarm
+Alarm -> MainTask : Alarm is triggered
+
+MainTask -> User : Wake user with alarm
+
 MainTask -> LightTask : Trigger Lights
 LightTask -> MainTask : Acknowledge Lights Turned On
 
 MainTask -> WorkdayTask : Check if Workday
-
 WorkdayTask -> MainTask : Return Workday Status and Current Day
 
 MainTask -> CoffeeTask : Start Brewing Coffee (if workday)

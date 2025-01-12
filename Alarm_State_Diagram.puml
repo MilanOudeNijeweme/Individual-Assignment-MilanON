@@ -1,5 +1,5 @@
-@startuml Alarm State Diagram
-state "Alarm Task" as AlarmTask {
+@startuml Alarm State Diagram (MAIN)
+state "MAIN Task" as AlarmTask {
     [*] --> Idle
     Idle --> SetAlarm : bSetAlarm = TRUE
     SetAlarm --> AlarmON : AlarmTimer.Q = TRUE

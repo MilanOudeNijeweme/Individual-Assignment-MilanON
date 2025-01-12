@@ -1,5 +1,5 @@
 @startuml Coffee_State_Diagram
-State "Cofee Task" as CoffeeTask {
+State "Coffee Maker Task" as CoffeeTask {
 [*] --> Idle 
 Idle--> Brewing : bAlarmON = TRUE AND bLightsON = TRUE AND bWorkdayStatus = TRUE
 Brewing --> CoffeeReady : CoffeeTimer.Q = TRUE
