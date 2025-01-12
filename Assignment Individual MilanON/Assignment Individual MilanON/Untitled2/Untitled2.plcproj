@@ -45,9 +45,15 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Reset.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Visualization.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="ResetTask.TcTTO">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="TaksLightsON.TcTTO">
       <SubType>Code</SubType>

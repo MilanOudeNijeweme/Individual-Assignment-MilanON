@@ -3,7 +3,7 @@
   <Task Name="TaksLightsON" Id="{c5651322-2a3f-4955-83ab-769c1286d56c}">
     <!--CycleTime in micro seconds.-->
     <CycleTime>10000</CycleTime>
-    <Priority>2</Priority>
+    <Priority>3</Priority>
     <PouCall>
       <Name>LightsON</Name>
     </PouCall>

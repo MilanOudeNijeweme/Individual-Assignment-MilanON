@@ -3,7 +3,10 @@
   <Task Name="ResetTask" Id="{15b2c8cf-41ff-4368-a85d-41ff37827eee}">
     <!--CycleTime in micro seconds.-->
     <CycleTime>10000</CycleTime>
-    <Priority>3</Priority>
+    <Priority>4</Priority>
+    <PouCall>
+      <Name>Reset</Name>
+    </PouCall>
     <TaskFBGuid>{e512cb10-2e45-4833-ac8f-fde0a29f9abb}</TaskFBGuid>
     <Fb_init>{7f201c7e-6dbc-4957-9a59-356d0545a96c}</Fb_init>
     <Fb_exit>{c468255c-2f5a-4bf9-b8e8-9ec0d11b4870}</Fb_exit>

@@ -9,6 +9,7 @@ VAR_GLOBAL
 	bCoffeeReady : BOOL := FALSE;		//Indicates if the coffee is ready
 	bLightsON : BOOL := FALSE;			//Indicates if the lights are on
 	bReset: BOOL;						//Triggers a reset of the system
+	bBrewing: BOOL := FALSE;			//Indicates if coffee is brewing
 	
 	LightDelayTimer : TON;				//Timer for delaying light activation after the alarm goes off
 	ResetTimer: TON;					//Timer to introduce a delay during reset.

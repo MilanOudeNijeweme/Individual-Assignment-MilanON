@@ -3,7 +3,7 @@
   <Task Name="CoffeeMakerTask" Id="{ce0d2f94-ca7d-4062-bb50-ee9525e65a1d}">
     <!--CycleTime in micro seconds.-->
     <CycleTime>10000</CycleTime>
-    <Priority>1</Priority>
+    <Priority>2</Priority>
     <PouCall>
       <Name>CoffeeMaker</Name>
     </PouCall>
