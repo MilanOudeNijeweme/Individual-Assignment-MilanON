@@ -17,6 +17,9 @@
     <LibraryReferences>{3641343a-cf45-49a3-83ca-37a8e62930b7}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CoffeeMakerTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>

@@ -6,11 +6,14 @@
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
+				<Task Id="4" Priority="1" CycleTime="500000" AmsPort="351" AdtTasks="true">
+					<Name>CoffeeMakerTask</Name>
+				</Task>
 			</Tasks>
 		</System>
 		<Plc>
 			<Project GUID="{DEDC2013-7FD9-487A-80C5-53DF39A9488D}" Name="Untitled2" PrjFilePath="Untitled2\Untitled2.plcproj" TmcFilePath="Untitled2\Untitled2.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Untitled2\Untitled2.tmc" TmcHash="{B66C1E62-B2BC-0AE2-BE4E-C2302A9BD900}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Untitled2\Untitled2.tmc" TmcHash="{A12FF24E-88B6-C861-57B8-E948F3E2C661}">
 					<Name>Untitled2 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

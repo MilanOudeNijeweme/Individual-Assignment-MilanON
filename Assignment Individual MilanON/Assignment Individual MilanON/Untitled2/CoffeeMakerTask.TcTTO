@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Task Name="CoffeeMakerTask" Id="{93742432-1275-489d-85e7-64eea859a79a}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>50000</CycleTime>
+    <Priority>1</Priority>
+    <PouCall>
+      <Name>CoffeeMaker</Name>
+    </PouCall>
+    <TaskFBGuid>{a992a298-ea8f-4aff-beed-3239b479a1ca}</TaskFBGuid>
+    <Fb_init>{ce64dcce-d46f-42af-84d6-e8c8f9d43278}</Fb_init>
+    <Fb_exit>{546c8b41-d530-4db1-9058-40a33fa6bf2c}</Fb_exit>
+    <CycleUpdate>{3c41387c-29d9-42e1-9e2a-064249a4da04}</CycleUpdate>
+    <PostCycleUpdate>{37998388-8b4f-4c6d-9f3b-74c99ef93c5f}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

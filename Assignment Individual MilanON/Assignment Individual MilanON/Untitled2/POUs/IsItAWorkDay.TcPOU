@@ -8,7 +8,9 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[//Checks if the day of the week is a workday
+      <ST><![CDATA[
+Day := GVL.DayCounter;
+//Checks if the day of the week is a workday
 IF Day >= 1 AND Day <= 5 THEN
     IsItAWorkday := TRUE; //Workday (Monday till friday)
 ELSE
@@ -16,6 +18,7 @@ ELSE
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="IsItAWorkDay">
+      <LineId Id="31" Count="1" />
       <LineId Id="24" Count="0" />
       <LineId Id="14" Count="1" />
       <LineId Id="25" Count="0" />
