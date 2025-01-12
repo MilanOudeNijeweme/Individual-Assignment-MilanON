@@ -12,11 +12,11 @@ END_VAR
 IF GVL.bAlarmON THEN
 	GVL.LightDelayTimer(IN:=TRUE, PT := GVL.tLightDelayTime); //Makes sure the alarm goes off after a predefined delay
 		IF GVL.LightDelayTimer.Q THEN
-			GVL.LightsON := TRUE;
+			GVL.bLightsON := TRUE;
 			GVL.LightDelayTimer(IN:=FALSE);
 		END_IF
 ELSE
-	GVL.LightsON := FALSE;
+	GVL.bLightsON := FALSE;
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="LightsON">

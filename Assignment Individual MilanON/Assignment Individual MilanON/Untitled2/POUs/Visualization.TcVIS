@@ -84,7 +84,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"GVL.AlarmON"</v>
+                      <v n="Value">"GVL.bAlarmON"</v>
                     </o>
                   </l>
                 </o>
@@ -178,7 +178,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"GVL.LightsON"</v>
+                      <v n="Value">"GVL.bLightsON"</v>
                     </o>
                   </l>
                 </o>
@@ -272,7 +272,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"GVL.CoffeeReady"</v>
+                      <v n="Value">"GVL.bCoffeeReady"</v>
                     </o>
                   </l>
                 </o>
@@ -1261,7 +1261,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"GVL.Reset"</v>
+                      <v n="Value">"GVL.bReset"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>

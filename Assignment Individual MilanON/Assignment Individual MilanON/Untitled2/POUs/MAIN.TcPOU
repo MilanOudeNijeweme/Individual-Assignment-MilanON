@@ -54,7 +54,7 @@ IF GVL.bReset THEN
 	GVL.ResetTimer(IN:=TRUE, PT := T#1S);
 	IF GVL.ResetTimer.Q THEN
 		GVL.bAlarmON := FALSE;
-		GVL.LightsON := FALSE;
+		GVL.bLightsON := FALSE;
 		GVL.bCoffeeReady := FALSE;
 		GVL.bReset := FALSE;
 		GVL.ResetTimer(IN:=FALSE);
