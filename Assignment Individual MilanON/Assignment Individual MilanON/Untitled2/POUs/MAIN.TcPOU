@@ -35,8 +35,6 @@ IF GVL.bSetAlarm AND NOT GVL.bAlarmON THEN
 			END_IF
 END_IF
 
-LightsON();
-
 //Determine if it's a workday based on the current day
 GVL.bWorkDayStatus := IsItAWorkDay(GVL.DayCounter);
 
@@ -80,8 +78,6 @@ END_IF
       <LineId Id="564" Count="0" />
       <LineId Id="485" Count="0" />
       <LineId Id="481" Count="0" />
-      <LineId Id="623" Count="0" />
-      <LineId Id="499" Count="0" />
       <LineId Id="624" Count="0" />
       <LineId Id="475" Count="0" />
       <LineId Id="500" Count="0" />

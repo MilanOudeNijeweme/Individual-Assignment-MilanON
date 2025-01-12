@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Task Name="TaksLightsON" Id="{c5651322-2a3f-4955-83ab-769c1286d56c}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>10000</CycleTime>
+    <Priority>2</Priority>
+    <PouCall>
+      <Name>LightsON</Name>
+    </PouCall>
+    <TaskFBGuid>{5c1319e6-f34f-4a59-b2ed-20cdda3a3f92}</TaskFBGuid>
+    <Fb_init>{c126b2ef-75c4-48c4-bd8c-e6f99c061890}</Fb_init>
+    <Fb_exit>{3d68f13c-3d5b-4e56-846a-6d3c56c7aef5}</Fb_exit>
+    <CycleUpdate>{bbf2581c-06bc-45d1-86b9-208aab5135cb}</CycleUpdate>
+    <PostCycleUpdate>{4d840229-2f3d-4d26-b7ec-a9faedcb59f8}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>
